@@ -35,5 +35,23 @@ class Scala99ProblemsTest extends FlatSpec {
       Scala99Problems.last(null)
     }
   }
+
+  "method nth" should "return Kth element of a list" in {
+    assertResult(4) {
+      Scala99Problems.nth(3, List(1, 2, 3, 4, 5, 6, 7, 8))
+    }
+    assertResult("a") {
+      Scala99Problems.nth(0, List("a", "b", "c"))
+    }
+    intercept [IllegalArgumentException] {
+      Scala99Problems.nth(5, List(1))
+    }
+    intercept [IllegalArgumentException] {
+      Scala99Problems.nth(-1, List(1))
+    }
+    intercept [IllegalArgumentException] {
+      Scala99Problems.nth(0, List())
+    }
+  }
 }
 

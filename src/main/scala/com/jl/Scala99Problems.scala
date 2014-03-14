@@ -16,4 +16,16 @@ object Scala99Problems extends App {
       case _ => throw new IllegalArgumentException(error_message)
     }
   }
+
+  def nth[T](index: Int, list: List[T]): T = {
+    list match {
+      case x :: xs => {
+        if (index < 0 || index > list.size - 1)
+          throw new IllegalArgumentException(error_message)
+        else
+          list(index)
+      }
+      case _ => throw new IllegalArgumentException(error_message)
+    }
+  }
 }
