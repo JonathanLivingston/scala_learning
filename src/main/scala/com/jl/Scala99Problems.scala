@@ -1,7 +1,7 @@
 package com.jl
 
 object Scala99Problems extends App {
-  val error_message = "Argument must not be null or empty";
+  val error_message = "Argument must not be null or empty"
 
   def last[T](list: List[T]): T = {
     list match {
