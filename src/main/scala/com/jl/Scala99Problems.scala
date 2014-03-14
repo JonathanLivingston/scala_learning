@@ -39,4 +39,14 @@ object Scala99Problems extends App {
       case _ => throw new IllegalArgumentException(error_message)
     }
   }
+
+  def reverse[T](list: List[T]): List[T] = {
+    list match {
+      case x :: xs => {
+        list.reverse
+      }
+      case Nil => Nil
+      case _ => throw new IllegalArgumentException(error_message)
+    }
+  }
 }

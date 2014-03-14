@@ -68,5 +68,20 @@ class Scala99ProblemsTest extends FlatSpec {
       Scala99Problems.length(null)
     }
   }
+
+  "method reverse" should "reverse a list" in {
+    assertResult(List(8, 7, 6, 5, 4, 3, 2, 1)) {
+      Scala99Problems.reverse(List(1, 2, 3, 4, 5, 6, 7, 8))
+    }
+    assertResult(List("a")) {
+      Scala99Problems.reverse(List("a"))
+    }
+    assertResult(List()) {
+      Scala99Problems.reverse(List())
+    }
+    intercept[IllegalArgumentException] {
+      Scala99Problems.reverse(null)
+    }
+  }
 }
 
