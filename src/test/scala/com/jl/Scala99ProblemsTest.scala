@@ -10,10 +10,10 @@ class Scala99ProblemsTest extends FlatSpec {
     assertResult("a") {
       Scala99Problems.last(List("a"))
     }
-    intercept [IllegalArgumentException] {
+    assertResult(null) {
       Scala99Problems.last(List())
     }
-    intercept [IllegalArgumentException] {
+    intercept[IllegalArgumentException] {
       Scala99Problems.last(null)
     }
   }
@@ -25,13 +25,13 @@ class Scala99ProblemsTest extends FlatSpec {
     assertResult("a") {
       Scala99Problems.penultimate(List("a", "b"))
     }
-    intercept [IllegalArgumentException] {
+    assertResult(null) {
       Scala99Problems.penultimate(List(4))
     }
-    intercept [IllegalArgumentException] {
+    assertResult(null) {
       Scala99Problems.penultimate(List())
     }
-    intercept [IllegalArgumentException] {
+    intercept[IllegalArgumentException] {
       Scala99Problems.last(null)
     }
   }
@@ -41,16 +41,31 @@ class Scala99ProblemsTest extends FlatSpec {
       Scala99Problems.nth(3, List(1, 2, 3, 4, 5, 6, 7, 8))
     }
     assertResult("a") {
-      Scala99Problems.nth(0, List("a", "b", "c"))
+      Scala99Problems.nth(0, List("a"))
     }
-    intercept [IllegalArgumentException] {
+    intercept[IllegalArgumentException] {
       Scala99Problems.nth(5, List(1))
     }
-    intercept [IllegalArgumentException] {
+    intercept[IllegalArgumentException] {
       Scala99Problems.nth(-1, List(1))
     }
-    intercept [IllegalArgumentException] {
+    intercept[IllegalArgumentException] {
       Scala99Problems.nth(0, List())
+    }
+  }
+
+  "method length" should "return the number of elements of a list" in {
+    assertResult(8) {
+      Scala99Problems.length(List(1, 2, 3, 4, 5, 6, 7, 8))
+    }
+    assertResult(1) {
+      Scala99Problems.length(List("a"))
+    }
+    assertResult(0) {
+      Scala99Problems.length(List())
+    }
+    intercept[IllegalArgumentException] {
+      Scala99Problems.length(null)
     }
   }
 }
