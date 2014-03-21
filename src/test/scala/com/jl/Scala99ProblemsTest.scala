@@ -90,5 +90,17 @@ class Scala99ProblemsTest extends FlatSpec {
     assert(!Scala99Problems.isPalindrome(List("a")))
     assert(!Scala99Problems.isPalindrome(List(1, 2, 3, 4, 5)))
   }
+
+  "method flatten" should "flatten list" in {
+    assertResult(List(1, 1, 2, 3, 5, 8)) {
+      Scala99Problems.flatten(List(List(1, 1), 2, List(3, List(5, 8))))
+    }
+    assertResult(List(1, 1, 2, 3, 5, 8)) {
+      Scala99Problems.flatten(List(1, 1, 2, 3, 5, 8))
+    }
+    assertResult(List(1, 1, "a", "b", 5, 8)) {
+      Scala99Problems.flatten(List(List(1, 1), "a", List("b", List(5, 8))))
+    }
+  }
 }
 

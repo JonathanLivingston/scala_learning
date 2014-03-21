@@ -1,5 +1,8 @@
 package com.jl
 
+import scala.collection.mutable.ListBuffer
+import scala.collection.mutable
+
 object Scala99Problems extends App {
   val error_message = "Argument must not be null or empty"
 
@@ -56,9 +59,31 @@ object Scala99Problems extends App {
         if (list.size % 2 == 0 || list.size < 3)
           return false
         val (firstPart, secondPart) = list.splitAt(list.size / 2)
-        firstPart == (secondPart diff List(secondPart.head)).reverse
+        firstPart == secondPart.drop(1).reverse
       }
       case _ => false
+    }
+  }
+
+  def flatten(list: List[Any]): List[Any] = {
+    list match {
+      case x :: xs => {
+        val builder: mutable.Builder[Any, List[Any]] = List.newBuilder
+        list.foreach(el => appendToList(builder, el))
+        builder.result()
+      }
+      case Nil => Nil
+      case _ => throw new IllegalArgumentException(error_message)
+    }
+  }
+
+  private def appendToList(builder: mutable.Builder[Any, List[Any]], element: Any): mutable.Builder[Any, List[Any]] = {
+    element match {
+      case el: List[Any] => {
+        el.foreach(listEl => appendToList(builder, listEl))
+        builder
+      }
+      case _ => builder += element
     }
   }
 }
