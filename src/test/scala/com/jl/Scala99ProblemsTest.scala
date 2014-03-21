@@ -83,5 +83,12 @@ class Scala99ProblemsTest extends FlatSpec {
       Scala99Problems.reverse(null)
     }
   }
+
+  "method isPalindrome" should "say whether list is palindrome" in {
+    assert(Scala99Problems.isPalindrome(List(1, 2, 3, 4, 3, 2, 1)))
+    assert(Scala99Problems.isPalindrome(List("a", "b", "a")))
+    assert(!Scala99Problems.isPalindrome(List("a")))
+    assert(!Scala99Problems.isPalindrome(List(1, 2, 3, 4, 5)))
+  }
 }
 

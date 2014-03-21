@@ -49,4 +49,16 @@ object Scala99Problems extends App {
       case _ => throw new IllegalArgumentException(error_message)
     }
   }
+
+  def isPalindrome[T](list: List[T]): Boolean = {
+    list match {
+      case x :: xs => {
+        if (list.size % 2 == 0 || list.size < 3)
+          return false
+        val (firstPart, secondPart) = list.splitAt(list.size / 2)
+        firstPart == (secondPart diff List(secondPart.head)).reverse
+      }
+      case _ => false
+    }
+  }
 }
